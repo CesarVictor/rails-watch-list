@@ -1,4 +1,13 @@
-<% @lists.each do |list| %>
-<p><%= link_to list.name, list %></p>
-<% end %>
-<%= link_to 'Create a new list', new_list_url %>
+
+
+<div class="card-list">
+  <% @lists.each do |list| %>
+    <%= cl_image_tag list.photo.key, crop: :fill %>
+  <% end %>
+  <div class="card-list-infos">
+    <% @lists.each do |list| %>
+    <h2><%= link_to list.name, list %></h2>
+    <% end %>
+    <p><%= link_to 'Create a new list', new_list_url %></p>
+  </div>
+</div>
