@@ -1,3 +1,10 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  # get 'lists', to: 'lists#index', as: 'lists'
+  # get 'lists/new', to: 'lists#new', as: 'new_list'
+  # get 'lists/:id', to: 'lists#show'
+  # post 'lists', to: 'lists#create'
+  resources :lists, only: %i[index new show create] do
+    resources :bookmarks, only: %i[new create destroy]
+  end
+  resources :bookmarks, only: %i[destroy]
 end
